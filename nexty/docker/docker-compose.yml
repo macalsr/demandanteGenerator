@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  db:
+    image: postgres:13
+    container_name: nexty
+    environment:
+      - POSTGRES_DB=nexty
+      - POSTGRES_USER=nexty
+      - POSTGRES_PASSWORD=nexty123
+    ports:
+      - 5432:5432
+    restart: always

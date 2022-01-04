@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: nexty
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/nexty
+    username: nexty
+    password: nexty123
+
+server:
+  port: 8083
+jwt:
+  secret: password

@@ -1,7 +1,7 @@
-package com.next.demandanteGenerator.filter;
+package com.next.demandanteGenerator.config.security.filter;
 
-import com.next.demandanteGenerator.Service.UserService;
-import com.next.demandanteGenerator.utility.JWTUtility;
+import com.next.demandanteGenerator.config.security.service.UserService;
+import com.next.demandanteGenerator.config.security.utility.JWTUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

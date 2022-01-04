@@ -1,6 +1,6 @@
-package com.next.demandanteGenerator.security;
+package com.next.demandanteGenerator.config.security.utility;
 
-import com.next.demandanteGenerator.model.User;
+import com.next.demandanteGenerator.config.security.model.Usuario;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -8,11 +8,11 @@ import java.util.Collection;
 
 public class CustomUserDetails implements UserDetails {
 
-    private User user;
+    private final Usuario usuario;
 
-    public CustomUserDetails(User user){
+    public CustomUserDetails(Usuario usuario){
         super();
-        this.user = user;
+        this.usuario = usuario;
     }
 
     @Override
@@ -22,12 +22,12 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return usuario.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return usuario.getUsername();
     }
 
     @Override

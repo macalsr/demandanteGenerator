@@ -1,4 +1,4 @@
-package com.next.demandanteGenerator.Service;
+package com.next.demandanteGenerator.service;
 
 import com.google.gson.Gson;
 import com.next.demandanteGenerator.model.Cidade;

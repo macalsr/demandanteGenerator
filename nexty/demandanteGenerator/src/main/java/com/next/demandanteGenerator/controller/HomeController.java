@@ -1,10 +1,10 @@
 package com.next.demandanteGenerator.controller;
 
 
-import com.next.demandanteGenerator.Service.UserService;
-import com.next.demandanteGenerator.model.JWTRequest;
-import com.next.demandanteGenerator.model.JWTResponse;
-import com.next.demandanteGenerator.utility.JWTUtility;
+import com.next.demandanteGenerator.config.security.service.UserService;
+import com.next.demandanteGenerator.config.security.model.JWTRequest;
+import com.next.demandanteGenerator.config.security.model.JWTResponse;
+import com.next.demandanteGenerator.config.security.utility.JWTUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;

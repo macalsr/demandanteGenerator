@@ -1,4 +1,4 @@
-package com.next.demandanteGenerator.utility;
+package com.next.demandanteGenerator.config.security.utility;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

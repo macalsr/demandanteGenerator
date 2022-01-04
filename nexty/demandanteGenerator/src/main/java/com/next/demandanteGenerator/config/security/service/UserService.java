@@ -1,5 +1,7 @@
-package com.next.demandanteGenerator.Service;
+package com.next.demandanteGenerator.config.security.service;
 
+import com.next.demandanteGenerator.config.security.model.Usuario;
+import com.next.demandanteGenerator.config.security.utility.CustomUserDetails;
 import com.next.demandanteGenerator.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -19,10 +21,10 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-//        User user = userRepository.findByUsername(username);
-//        if(user == null){
-//            throw new UsernameNotFoundException("User Not Found");
-//        }
+//            Usuario usuario = userRepository.findByUsername(username);
+//            if (usuario == null) {
+//                throw new UsernameNotFoundException("User Not Found");
+//            }
 
         return new User("admin", "password", new ArrayList<>());
     }

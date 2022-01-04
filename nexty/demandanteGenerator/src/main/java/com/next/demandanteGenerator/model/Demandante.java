@@ -1,25 +1,27 @@
 package com.next.demandanteGenerator.model;
 
-import javax.persistence.*;
-import java.util.List;
+import com.next.demandanteGenerator.config.security.model.Usuario;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.persistence.*;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "demandante", schema = "dev")
 public class Demandante {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
     @Column(name = "nmDemandante")
     private String nmDemandante;
 
-    @Column(name = "cdAtendimento")
-    private Integer cdTipoDemandante;
-
-    @Column(name = "cdAtendimento")
-    private String cdAtendimento;
+    @Column(name = "cd_Atendimento")
+    private Integer cdAtendimento;
 
     @Column(name = "email")
     private String email;
@@ -27,20 +29,32 @@ public class Demandante {
     @Column(name = "cpf")
     private String cpf;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated
     @Column(name = "sexo")
-    private String sexo;
+    private Sexo sexo;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "id_telefone")
-    private List<Telefone> telefone;
+    private Telefone telefone;
 
     @JoinColumn(name = "id_user")
     @OneToOne
-    private User user;
+    private Usuario usuario;
 
-    @ManyToMany
+    @OneToOne
     @JoinColumn(name = "id_cidade")
-    private List<Cidade> cidade;
+    private Cidade cidade;
 
+//    public Demandante(DemandanteDto, demandantedto) {
+//        this.id = id;
+//        this.nmDemandante = nmDemandante;
+//        this.cdTipoDemandante = cdTipoDemandante;
+//        this.cdAtendimento = cdAtendimento;
+//        this.email = email;
+//        this.cpf = cpf;
+//        this.sexo = sexo;
+//        this.telefone = telefone;
+//        this.user = user;
+//        this.cidade = cidade;
+//    }
 }

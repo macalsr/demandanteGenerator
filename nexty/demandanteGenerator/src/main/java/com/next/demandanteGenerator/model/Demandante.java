@@ -1,6 +1,6 @@
 package com.next.demandanteGenerator.model;
 
-import com.next.demandanteGenerator.config.security.model.Usuario;
+import com.next.demandanteGenerator.model.security.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,7 +39,7 @@ public class Demandante {
 
     @JoinColumn(name = "id_user")
     @OneToOne
-    private Usuario usuario;
+    private User usuario;
 
     @OneToOne
     @JoinColumn(name = "id_cidade")

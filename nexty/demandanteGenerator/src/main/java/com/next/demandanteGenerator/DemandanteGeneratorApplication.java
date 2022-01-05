@@ -13,9 +13,4 @@ public class DemandanteGeneratorApplication {
 		SpringApplication.run(DemandanteGeneratorApplication.class, args);
 	}
 
-	@Bean
-	public PasswordEncoder passwordEncoder(){
-		return NoOpPasswordEncoder.getInstance();
-	}
-
 }

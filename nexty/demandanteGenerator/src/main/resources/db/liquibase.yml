@@ -1,0 +1,6 @@
+changeLogFile: src/main/resources/db/changelog/master.xml
+url: jdbc:postgresql://localhost:5432/nexty-postgres
+defaultSchemaName: public
+username: nexty
+password: nexty123
+driver: org.postgresql.Driver

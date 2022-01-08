@@ -1,0 +1,32 @@
+<p-card>
+  <form [formGroup]="form">
+    <app-formulario-demandante #formulario [demandante]="demandante" [mostrarAnexo]="true" [(ngModel)]="demandante"
+                                formControlName="demandante">
+    </app-formulario-demandante>
+    <div class="p-grid p-mt-5">
+      <div class="p-grid p-col-6">
+        <div class="p-col-4">
+          <button pButton class="botao-cancelar" (click)="cancelar()" [label]="'Cancelar'"
+                  title="Cancelar Operação">
+            <i [class]="'icone-botao pi pi-ban'"></i>
+          </button>
+        </div>
+      </div>
+      <div class="p-grid p-col-6">
+        <div class="p-col-6">
+          <button pButton class="botao-salvar" (click)="salvarDemandante()"
+                  label="Salvar" type="submit" title="Salvar Experiência">
+            <i class="icone-botao pi pi-save"></i>
+          </button>
+        </div>
+        <div class="p-col-6">
+          <button pButton class="botao-salvar" (click)="enviar()" label="Enviar" type="button" title="Enviar Experiência">
+            <i class="icone-botao pi pi-send"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</p-card>
+
+<p-confirmDialog [closable]="false"></p-confirmDialog>

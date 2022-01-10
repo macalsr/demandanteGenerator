@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, Routes } from '@angular/router';
-import { Observable, of } from 'rxjs';
 
 import { User, IUser } from './user-management.model';
 import { UserManagementService } from './service/user-management.service';
-import { UserManagementComponent } from './list/user-management.component';
-import { UserManagementDetailComponent } from './detail/user-management-detail.component';
-import { UserManagementUpdateComponent } from './update/user-management-update.component';
+import {DemandanteComponent} from "../../entities/entities/demandante/components/list/demandante.component";
+import {
+  DemandanteUpdateComponent
+} from "../../entities/entities/demandante/components/form/update/demandante-update.component";
+import {ActivatedRouteSnapshot, Resolve, Routes} from "@angular/router";
+import {Observable, of} from "rxjs";
+import {Injectable} from "@angular/core";
 
 @Injectable({ providedIn: 'root' })
 export class UserManagementResolve implements Resolve<IUser> {
@@ -24,28 +25,19 @@ export class UserManagementResolve implements Resolve<IUser> {
 export const userManagementRoute: Routes = [
   {
     path: '',
-    component: UserManagementComponent,
-    data: {
-      defaultSort: 'id,asc',
-    },
-  },
-  {
-    path: ':login/view',
-    component: UserManagementDetailComponent,
-    resolve: {
-      user: UserManagementResolve,
-    },
+    component: DemandanteComponent,
+    data: {},
   },
   {
     path: 'new',
-    component: UserManagementUpdateComponent,
+    component: DemandanteUpdateComponent,
     resolve: {
       user: UserManagementResolve,
     },
   },
   {
     path: ':login/edit',
-    component: UserManagementUpdateComponent,
+    component: DemandanteUpdateComponent,
     resolve: {
       user: UserManagementResolve,
     },

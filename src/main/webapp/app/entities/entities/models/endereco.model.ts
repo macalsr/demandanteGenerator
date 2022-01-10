@@ -24,6 +24,6 @@ export class Endereco implements IEndereco {
   ) {}
 }
 
-export function getEnderecoIdentifier(endereco: IEndereco) {
+export function getEnderecoIdentifier(endereco: IEndereco): number {
   return endereco.id;
 }

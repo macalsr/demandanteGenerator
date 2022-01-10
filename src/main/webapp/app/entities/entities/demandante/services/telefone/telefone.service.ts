@@ -40,21 +40,4 @@ export class TelefoneService {
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
-
-  addTelefoneToCollectionIfMissing(telefoneCollection: ITelefone[], ...telefonesToCheck: (ITelefone | null | undefined)[]): ITelefone[] {
-    const telefones: ITelefone[] = telefonesToCheck.filter(isPresent);
-    if (telefones.length > 0) {
-      const telefoneCollectionIdentifiers = telefoneCollection.map(telefoneItem => getTelefoneIdentifier(telefoneItem)!);
-      const telefonesToAdd = telefones.filter(telefoneItem => {
-        const telefoneIdentifier = getTelefoneIdentifier(telefoneItem);
-        if (telefoneIdentifier == null || telefoneCollectionIdentifiers.includes(telefoneIdentifier)) {
-          return false;
-        }
-        telefoneCollectionIdentifiers.push(telefoneIdentifier);
-        return true;
-      });
-      return [...telefonesToAdd, ...telefoneCollection];
-    }
-    return telefoneCollection;
-  }
 }

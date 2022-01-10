@@ -18,6 +18,6 @@ export class Telefone implements ITelefone {
   ) {}
 }
 
-export function getTelefoneIdentifier(telefone: ITelefone) {
+export function getTelefoneIdentifier(telefone: ITelefone): number {
   return telefone.id;
 }

@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { finalize, map } from 'rxjs/operators';
 import { Sexo } from '../../../../models/enumerations/sexo.model';
-import { Endereco, IEndereco } from '../../../../models/endereco.model';
+import {  IEndereco } from '../../../../models/endereco.model';
 import { DemandanteService } from '../../../services/demandante.service';
 import { TelefoneService } from '../../../services/telefone/telefone.service';
 import { EnderecoService } from '../../../services/endereco/endereco.service';
@@ -46,8 +46,6 @@ export class DemandanteUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ demandante }) => {
       this.updateForm(demandante);
-
-      this.loadRelationshipsOptions();
     });
   }
 
@@ -100,32 +98,8 @@ export class DemandanteUpdateComponent implements OnInit {
       cdAtendimento: demandante.cdAtendimento,
       sexo: demandante.sexo,
     });
-
-    this.telefonesCollection = this.telefoneService.addTelefoneToCollectionIfMissing(this.telefonesCollection, demandante.telefone);
-    this.enderecosCollection = this.enderecoService.addEnderecoToCollectionIfMissing(this.enderecosCollection, demandante.endereco);
   }
 
-  protected loadRelationshipsOptions(): void {
-    this.telefoneService
-      .query({ filter: 'demandante-is-null' })
-      .pipe(map((res: HttpResponse<ITelefone[]>) => res.body ?? []))
-      .pipe(
-        map((telefones: ITelefone[]) =>
-          this.telefoneService.addTelefoneToCollectionIfMissing(telefones, this.editForm.get('telefone')!.value)
-        )
-      )
-      .subscribe((telefones: ITelefone[]) => (this.telefonesCollection = telefones));
-
-    this.enderecoService
-      .query({ filter: 'demandante-is-null' })
-      .pipe(map((res: HttpResponse<IEndereco[]>) => res.body ?? []))
-      .pipe(
-        map((enderecos: IEndereco[]) =>
-          this.enderecoService.addEnderecoToCollectionIfMissing(enderecos, this.editForm.get('endereco')!.value)
-        )
-      )
-      .subscribe((enderecos: IEndereco[]) => (this.enderecosCollection = enderecos));
-  }
 
   protected createFromDemandante(): {
     telefone: string;

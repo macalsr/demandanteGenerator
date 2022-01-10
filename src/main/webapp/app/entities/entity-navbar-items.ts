@@ -1,6 +1,6 @@
 export const EntityNavbarItems = [
   {
-    name: 'Demandante',
+    name: '',
     route: 'entity-routing.module.ts',
   },
 ];

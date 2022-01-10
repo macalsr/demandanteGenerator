@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <changeSet id="20220108235229-1" author="Maria">
+        <createTable tableName="demandante">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nm_demandante" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="cpf" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="cd_tipo_demandante" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="cd_atendimento" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="sexo" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="active" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="telefone_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_demandante__telefone_id" />
+            </column>
+            <column name="endereco_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_demandante__endereco_id" />
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="20220108235229-1-data" author="Maria" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/demandante.csv"
+                  separator=";"
+                  tableName="demandante"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="nm_demandante" type="string"/>
+            <column name="cpf" type="string"/>
+            <column name="cd_tipo_demandante" type="numeric"/>
+            <column name="cd_atendimento" type="numeric"/>
+            <column name="sexo" type="string"/>
+            <column name="active" type="boolean"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

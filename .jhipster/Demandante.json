@@ -1,0 +1,58 @@
+{
+  "name": "Demandante",
+  "fields": [
+    {
+      "fieldName": "nmDemandante",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cpf",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cdTipoDemandante",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "cdAtendimento",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "sexo",
+      "fieldType": "Sexo",
+      "fieldValues": "Feminino,Masculino,Outros"
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "telefone",
+      "otherEntityRelationshipName": "demandante",
+      "relationshipName": "telefone",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "endereco",
+      "otherEntityRelationshipName": "demandante",
+      "relationshipName": "endereco",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "demandante",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["Nexty"],
+  "changelogDate": "20220108235229"
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="20220108235229-2" author="Maria">
+
+        <addForeignKeyConstraint baseColumnNames="telefone_id"
+                                 baseTableName="demandante"
+                                 constraintName="fk_demandante__telefone_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="telefone"/>
+
+        <addForeignKeyConstraint baseColumnNames="endereco_id"
+                                 baseTableName="demandante"
+                                 constraintName="fk_demandante__endereco_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="endereco"/>
+    </changeSet>
+</databaseChangeLog>

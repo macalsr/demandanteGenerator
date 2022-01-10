@@ -1,0 +1,79 @@
+<div class="card">
+  <h5>Implicit Pagination</h5>
+  <p-table
+    [paginator]="true"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    responsiveLayout="scroll"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[10, 25, 50]"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>Cpf</th>
+        <th>Endereco</th>
+        <th>Telefone</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-demandantes>
+      <tr>
+        <td>{{ demandanteLoad.nmDemandante }}</td>
+        <td>{{ demandanteLoad.cpf }}</td>
+        <td>
+          {{
+            demandanteLoad.endereco.uf
+              .concat(' ')
+              .concat(demandanteLoad.endereco.localidade)
+              .concat(' ')
+              .concat(demandanteLoad.endereco.bairro)
+          }}
+        </td>
+        <td>{{ demandanteLoad.telefone.ddd.concat(' ').concat(demandanteLoad.telefone.telefone) }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="paginatorleft">
+      <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+      <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+    </ng-template>
+  </p-table>
+</div>
+
+<div class="card">
+  <h5>Programmatic Control</h5>
+  <div class="p-mb-3"></div>
+  <p-table
+    [paginator]="true"
+    [rows]="rows"
+    [showCurrentPageReport]="true"
+    [(first)]="first"
+    responsiveLayout="scroll"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[10, 25, 50]"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Company</th>
+        <th>Representative</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body">
+      <tr>
+        <td>{{ demandanteLoad.nmDemandante }}</td>
+        <td>{{ demandanteLoad.cpf }}</td>
+        <td>
+          {{
+            demandanteLoad.endereco.uf
+              .concat(' ')
+              .concat(demandanteLoad.endereco.localidade.concat('').concat(demandanteLoad.endereco.bairro))
+          }}
+        </td>
+        <td>{{ demandanteLoad.telefone.ddd.concat(' ').concat(demandanteLoad.telefone.telefone) }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

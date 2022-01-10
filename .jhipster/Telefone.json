@@ -1,0 +1,36 @@
+{
+  "name": "Telefone",
+  "fields": [
+    {
+      "fieldName": "ddd",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telefone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tipoTelefone",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "demandante",
+      "otherEntityRelationshipName": "telefone",
+      "relationshipName": "demandante",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "telefone",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["Nexty"],
+  "changelogDate": "20220108235329"
+}

@@ -1,0 +1,57 @@
+
+application {
+  config {
+    baseName Nexty,
+    applicationType monolith,
+    packageName com.nexty,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    clientFramework angular
+  }
+   entities Demandante, Telefone, Endereco
+  dto * with mapstruct
+}
+
+entity Demandante {
+	  nmDemandante String required
+	  cpf String required
+	  cdTipoDemandante Integer 
+      cdAtendimento Integer 
+	  sexo Sexo
+      active Boolean
+}
+enum Sexo {
+	Feminino,
+    Masculino,
+    Outros
+}
+
+entity Telefone {
+	ddd String 
+    telefone String
+    tipoTelefone Integer
+
+}
+entity Endereco {
+    cep String
+    logradouro String
+    complemento String
+    bairro String
+    localidade String
+    uf String
+}
+paginate Demandante with pagination
+service Demandante with serviceImpl
+service Endereco with serviceClass
+service Telefone with serviceClass
+
+relationship OneToOne {
+  Demandante to Telefone
+  Demandante to Endereco
+}
+deployment {
+  deploymentType docker-compose
+  appsFolders [ Endereco, Telefone, Demandante]
+  dockerRepositoryName "nexty"
+}
+    

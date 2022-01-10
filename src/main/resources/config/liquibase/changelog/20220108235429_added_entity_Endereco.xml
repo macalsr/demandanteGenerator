@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="20220108235429-1" author="Maria">
+        <createTable tableName="endereco">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="cep" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="logradouro" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="complemento" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="bairro" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="localidade" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="uf" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20220108235429-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/endereco.csv"
+                  separator=";"
+                  tableName="endereco"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="cep" type="string"/>
+            <column name="logradouro" type="string"/>
+            <column name="complemento" type="string"/>
+            <column name="bairro" type="string"/>
+            <column name="localidade" type="string"/>
+            <column name="uf" type="string"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

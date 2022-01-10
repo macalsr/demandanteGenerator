@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="20220108235329-1" author="Maria">
+        <createTable tableName="telefone">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="ddd" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="telefone" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="tipo_telefone" type="integer">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="20220108235329-1-data" author="Maria" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/telefone.csv"
+                  separator=";"
+                  tableName="telefone"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="ddd" type="string"/>
+            <column name="telefone" type="string"/>
+            <column name="tipo_telefone" type="numeric"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>
